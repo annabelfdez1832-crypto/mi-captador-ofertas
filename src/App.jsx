@@ -3,18 +3,19 @@ import { useState } from "react";
 const BRAND = {
   name: "AuraPesca",
   tagline: "Tu tienda de pesca online",
-  primary: "#1a6b3c",
-  primaryDark: "#0f4526",
-  primaryLight: "#2d9955",
-  accent: "#f5a623",
-  accentDark: "#d4891a",
-  bg: "#f4f8f5",
-  dark: "#1a2e1f",
-  text: "#2c3e32",
-  textLight: "#6b7c70",
-  white: "#ffffff",
-  cardBg: "#ffffff",
-  border: "#d0e0d6",
+  primary: "#6366f1",
+  primaryDark: "#4f46e5",
+  primaryLight: "#818cf8",
+  accent: "#6366f1",
+  accentDark: "#4f46e5",
+  bg: "#0f1117",
+  dark: "#f8fafc",
+  text: "#e2e8f0",
+  textLight: "#94a3b8",
+  white: "#1e2130",
+  cardBg: "#1e2130",
+  border: "#2d3148",
+  surface: "#181b2e",
 };
 
 const PRODUCTS = [
@@ -24,7 +25,7 @@ const PRODUCTS = [
     category: "Cañas",
     price: 49.99,
     originalPrice: 79.99,
-    image: "https://via.placeholder.com/400x300/1a6b3c/ffffff?text=Caña+Pro",
+    image: "https://via.placeholder.com/400x300/6366f1/ffffff?text=Caña+Pro",
     badge: "Oferta",
     rating: 4.8,
     reviews: 124,
@@ -36,7 +37,7 @@ const PRODUCTS = [
     category: "Carretes",
     price: 34.99,
     originalPrice: 55.00,
-    image: "https://via.placeholder.com/400x300/1a6b3c/ffffff?text=Carrete+Ultra",
+    image: "https://via.placeholder.com/400x300/6366f1/ffffff?text=Carrete+Ultra",
     badge: "Nuevo",
     rating: 4.6,
     reviews: 89,
@@ -48,7 +49,7 @@ const PRODUCTS = [
     category: "Señuelos",
     price: 19.99,
     originalPrice: 35.00,
-    image: "https://via.placeholder.com/400x300/2d9955/ffffff?text=Kit+Señuelos",
+    image: "https://via.placeholder.com/400x300/818cf8/ffffff?text=Kit+Señuelos",
     badge: "Oferta",
     rating: 4.9,
     reviews: 203,
@@ -60,7 +61,7 @@ const PRODUCTS = [
     category: "Líneas",
     price: 12.99,
     originalPrice: 18.00,
-    image: "https://via.placeholder.com/400x300/0f4526/ffffff?text=Línea+FC",
+    image: "https://via.placeholder.com/400x300/4f46e5/ffffff?text=Línea+FC",
     badge: null,
     rating: 4.7,
     reviews: 56,
@@ -72,7 +73,7 @@ const PRODUCTS = [
     category: "Accesorios",
     price: 29.99,
     originalPrice: 45.00,
-    image: "https://via.placeholder.com/400x300/1a6b3c/ffffff?text=Silla+Pesca",
+    image: "https://via.placeholder.com/400x300/6366f1/ffffff?text=Silla+Pesca",
     badge: "Top Ventas",
     rating: 4.5,
     reviews: 178,
@@ -84,7 +85,7 @@ const PRODUCTS = [
     category: "Anzuelos",
     price: 7.99,
     originalPrice: 12.00,
-    image: "https://via.placeholder.com/400x300/2d9955/ffffff?text=Anzuelos",
+    image: "https://via.placeholder.com/400x300/818cf8/ffffff?text=Anzuelos",
     badge: "Oferta",
     rating: 4.4,
     reviews: 312,
@@ -96,7 +97,7 @@ const PRODUCTS = [
     category: "Ropa",
     price: 44.99,
     originalPrice: 65.00,
-    image: "https://via.placeholder.com/400x300/0f4526/ffffff?text=Chaleco",
+    image: "https://via.placeholder.com/400x300/4f46e5/ffffff?text=Chaleco",
     badge: "Nuevo",
     rating: 4.7,
     reviews: 67,
@@ -108,7 +109,7 @@ const PRODUCTS = [
     category: "Accesorios",
     price: 9.99,
     originalPrice: null,
-    image: "https://via.placeholder.com/400x300/1a6b3c/ffffff?text=Cubo",
+    image: "https://via.placeholder.com/400x300/6366f1/ffffff?text=Cubo",
     badge: null,
     rating: 4.3,
     reviews: 45,
@@ -123,28 +124,28 @@ const HERO_SLIDES = [
     title: "Temporada de Pesca",
     subtitle: "¡Hasta 40% de descuento en cañas y carretes seleccionados!",
     cta: "Ver Ofertas",
-    bg: "#1a6b3c",
+    bg: "linear-gradient(135deg, #1e2130 0%, #2d1f6e 100%)",
     img: "🎣",
   },
   {
     title: "Nuevos Señuelos 2025",
     subtitle: "Descubre la colección más completa para pescar todo tipo de peces.",
     cta: "Ver Novedades",
-    bg: "#0f4526",
+    bg: "linear-gradient(135deg, #181b2e 0%, #3730a3 100%)",
     img: "🐟",
   },
   {
     title: "Envío Gratis",
     subtitle: "En pedidos superiores a 40€. Recíbelos en 24-48h en toda España.",
     cta: "Comprar Ahora",
-    bg: "#2d9955",
+    bg: "linear-gradient(135deg, #1e2130 0%, #4338ca 100%)",
     img: "📦",
   },
 ];
 
 function StarRating({ rating }) {
   return (
-    <span style={{ color: BRAND.accent, fontSize: "0.85rem" }}>
+    <span style={{ color: "#f59e0b", fontSize: "0.85rem" }}>
       {"★".repeat(Math.floor(rating))}
       {rating % 1 >= 0.5 ? "½" : ""}
       {"☆".repeat(5 - Math.ceil(rating))}
@@ -154,8 +155,8 @@ function StarRating({ rating }) {
 
 function Badge({ text }) {
   const colors = {
-    "Oferta": { bg: "#e53e3e", color: "#fff" },
-    "Nuevo": { bg: "#3182ce", color: "#fff" },
+    "Oferta": { bg: "#ef4444", color: "#fff" },
+    "Nuevo": { bg: "#3b82f6", color: "#fff" },
     "Top Ventas": { bg: BRAND.accent, color: "#fff" },
   };
   const style = colors[text] || { bg: BRAND.primary, color: "#fff" };
@@ -180,7 +181,6 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [heroSlide, setHeroSlide] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [notification, setNotification] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -229,52 +229,68 @@ export default function App() {
     },
     // HEADER
     header: {
-      background: BRAND.white,
-      boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+      background: "#13162a",
+      boxShadow: "0 2px 20px rgba(0,0,0,0.4)",
       position: "sticky",
       top: 0,
       zIndex: 100,
+      borderBottom: "1px solid #2d3148",
     },
     headerTop: {
-      background: BRAND.primaryDark,
-      color: BRAND.white,
-      fontSize: "0.78rem",
+      background: "#0b0d1a",
+      color: "rgba(255,255,255,0.55)",
+      fontSize: "0.75rem",
       textAlign: "center",
-      padding: "6px 16px",
+      padding: "5px 16px",
+      borderBottom: "1px solid #1e2130",
+      letterSpacing: "0.02em",
     },
     headerMain: {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "12px 24px",
+      padding: "10px 24px",
       maxWidth: 1200,
       margin: "0 auto",
-      gap: 12,
+      gap: 16,
     },
-    logo: {
+    logoArea: {
       display: "flex",
       alignItems: "center",
-      gap: 8,
+      gap: 10,
       cursor: "pointer",
-      textDecoration: "none",
+      flexShrink: 0,
     },
     logoIcon: {
-      fontSize: "1.8rem",
+      fontSize: "1.6rem",
     },
     logoText: {
-      fontSize: "1.5rem",
+      fontSize: "1.35rem",
       fontWeight: 800,
-      color: BRAND.primary,
+      color: "#ffffff",
       letterSpacing: "-0.02em",
+    },
+    earlyBadge: {
+      background: "linear-gradient(90deg, #6366f1, #818cf8)",
+      color: "#fff",
+      fontSize: "0.58rem",
+      fontWeight: 800,
+      padding: "2px 7px",
+      borderRadius: 20,
+      textTransform: "uppercase",
+      letterSpacing: "0.08em",
+      alignSelf: "center",
+      marginTop: 2,
+      boxShadow: "0 0 8px rgba(99,102,241,0.5)",
     },
     searchBar: {
       flex: 1,
-      maxWidth: 400,
+      maxWidth: 420,
       display: "flex",
-      border: `2px solid ${BRAND.border}`,
+      border: "1.5px solid #2d3148",
       borderRadius: 24,
       overflow: "hidden",
-      transition: "border-color 0.2s",
+      background: "#1a1d2e",
     },
     searchInput: {
       flex: 1,
@@ -282,40 +298,64 @@ export default function App() {
       outline: "none",
       padding: "8px 16px",
       fontSize: "0.9rem",
-      background: BRAND.bg,
-      color: BRAND.text,
+      background: "transparent",
+      color: "#e2e8f0",
     },
     searchBtn: {
       background: BRAND.primary,
-      color: BRAND.white,
+      color: "#fff",
       border: "none",
       padding: "8px 16px",
       cursor: "pointer",
       fontSize: "1rem",
+      transition: "background 0.2s",
     },
     headerActions: {
       display: "flex",
       alignItems: "center",
-      gap: 8,
+      gap: 10,
+    },
+    connectedBadge: {
+      display: "flex",
+      alignItems: "center",
+      gap: 5,
+      background: "rgba(34,197,94,0.12)",
+      border: "1px solid rgba(34,197,94,0.35)",
+      color: "#4ade80",
+      borderRadius: 20,
+      padding: "4px 12px",
+      fontSize: "0.75rem",
+      fontWeight: 700,
+      letterSpacing: "0.04em",
+      flexShrink: 0,
+    },
+    connectedDot: {
+      width: 7,
+      height: 7,
+      borderRadius: "50%",
+      background: "#22c55e",
+      boxShadow: "0 0 6px #22c55e",
+      display: "inline-block",
     },
     cartBtn: {
       position: "relative",
       background: BRAND.primary,
-      color: BRAND.white,
+      color: "#fff",
       border: "none",
       borderRadius: 20,
-      padding: "8px 16px",
+      padding: "8px 18px",
       cursor: "pointer",
       display: "flex",
       alignItems: "center",
       gap: 6,
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: "0.9rem",
-      transition: "background 0.2s",
+      transition: "background 0.2s, box-shadow 0.2s",
+      boxShadow: "0 0 12px rgba(99,102,241,0.35)",
     },
     cartBadge: {
-      background: BRAND.accent,
-      color: BRAND.white,
+      background: "#ef4444",
+      color: "#fff",
       borderRadius: "50%",
       width: 18,
       height: 18,
@@ -326,35 +366,37 @@ export default function App() {
       fontWeight: 800,
     },
     nav: {
-      background: BRAND.primary,
+      background: "#10132a",
       display: "flex",
       justifyContent: "center",
       gap: 0,
+      borderTop: "1px solid #1e2130",
     },
     navItem: (active, hovered) => ({
-      color: BRAND.white,
-      padding: "10px 20px",
+      color: active ? "#ffffff" : "rgba(255,255,255,0.6)",
+      padding: "10px 22px",
       cursor: "pointer",
-      fontSize: "0.9rem",
-      fontWeight: 600,
-      background: (active || hovered) ? BRAND.primaryDark : "transparent",
+      fontSize: "0.88rem",
+      fontWeight: active ? 700 : 500,
+      background: active ? BRAND.primary : hovered ? "rgba(99,102,241,0.12)" : "transparent",
       border: "none",
-      transition: "background 0.2s",
+      transition: "background 0.2s, color 0.2s",
       letterSpacing: "0.01em",
+      borderBottom: active ? `2px solid ${BRAND.primaryLight}` : "2px solid transparent",
     }),
     // HERO
-    hero: {
-      background: HERO_SLIDES[heroSlide].bg,
-      color: BRAND.white,
-      padding: "60px 24px",
+    hero: (slide) => ({
+      background: HERO_SLIDES[slide].bg,
+      color: "#ffffff",
+      padding: "64px 24px",
       textAlign: "center",
       position: "relative",
       overflow: "hidden",
-      minHeight: 280,
+      minHeight: 300,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-    },
+    }),
     heroContent: {
       maxWidth: 700,
       margin: "0 auto",
@@ -369,24 +411,27 @@ export default function App() {
       fontWeight: 900,
       marginBottom: 12,
       lineHeight: 1.1,
+      color: "#ffffff",
     },
     heroSubtitle: {
       fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
-      opacity: 0.9,
-      marginBottom: 24,
-      lineHeight: 1.5,
+      opacity: 0.85,
+      marginBottom: 28,
+      lineHeight: 1.6,
+      color: "rgba(255,255,255,0.85)",
     },
     heroCta: {
-      background: BRAND.accent,
-      color: BRAND.white,
+      background: BRAND.primary,
+      color: "#fff",
       border: "none",
       borderRadius: 28,
-      padding: "14px 32px",
+      padding: "14px 36px",
       fontSize: "1.05rem",
       fontWeight: 700,
       cursor: "pointer",
-      transition: "background 0.2s, transform 0.1s",
+      transition: "background 0.2s, transform 0.1s, box-shadow 0.2s",
       letterSpacing: "0.02em",
+      boxShadow: "0 0 20px rgba(99,102,241,0.5)",
     },
     heroDots: {
       display: "flex",
@@ -398,7 +443,7 @@ export default function App() {
       width: active ? 24 : 8,
       height: 8,
       borderRadius: 4,
-      background: active ? BRAND.white : "rgba(255,255,255,0.4)",
+      background: active ? "#ffffff" : "rgba(255,255,255,0.3)",
       border: "none",
       cursor: "pointer",
       transition: "all 0.3s",
@@ -414,7 +459,7 @@ export default function App() {
     sectionTitle: {
       fontSize: "1.6rem",
       fontWeight: 800,
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 8,
     },
     sectionSubtitle: {
@@ -430,9 +475,9 @@ export default function App() {
       marginBottom: 24,
     },
     chip: (active, hovered) => ({
-      background: active ? BRAND.primary : hovered ? BRAND.border : BRAND.white,
-      color: active ? BRAND.white : BRAND.text,
-      border: `2px solid ${active ? BRAND.primary : BRAND.border}`,
+      background: active ? BRAND.primary : hovered ? "#2d3148" : "#1e2130",
+      color: active ? "#fff" : BRAND.text,
+      border: `1.5px solid ${active ? BRAND.primary : "#2d3148"}`,
       borderRadius: 20,
       padding: "6px 16px",
       cursor: "pointer",
@@ -447,21 +492,21 @@ export default function App() {
       gap: 20,
     },
     productCard: (hovered) => ({
-      background: BRAND.white,
+      background: "#1e2130",
       borderRadius: 16,
       overflow: "hidden",
-      boxShadow: hovered ? "0 8px 30px rgba(0,0,0,0.12)" : "0 2px 10px rgba(0,0,0,0.06)",
+      boxShadow: hovered ? "0 8px 32px rgba(99,102,241,0.18)" : "0 2px 10px rgba(0,0,0,0.3)",
       transition: "transform 0.2s, box-shadow 0.2s",
       transform: hovered ? "translateY(-4px)" : "none",
       cursor: "pointer",
-      border: `1px solid ${BRAND.border}`,
+      border: `1px solid ${hovered ? BRAND.primary : "#2d3148"}`,
     }),
     productImg: {
       width: "100%",
       height: 180,
       objectFit: "cover",
       display: "block",
-      background: BRAND.bg,
+      background: "#181b2e",
     },
     productBody: {
       padding: "14px",
@@ -477,7 +522,7 @@ export default function App() {
     productName: {
       fontSize: "0.95rem",
       fontWeight: 700,
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 4,
       lineHeight: 1.3,
     },
@@ -490,7 +535,7 @@ export default function App() {
     productPrice: {
       fontSize: "1.2rem",
       fontWeight: 800,
-      color: BRAND.primary,
+      color: BRAND.primaryLight,
     },
     productOriginal: {
       fontSize: "0.85rem",
@@ -500,8 +545,8 @@ export default function App() {
     productDiscount: {
       fontSize: "0.75rem",
       fontWeight: 700,
-      color: "#e53e3e",
-      background: "#fff5f5",
+      color: "#f87171",
+      background: "rgba(239,68,68,0.12)",
       borderRadius: 6,
       padding: "1px 5px",
     },
@@ -516,40 +561,44 @@ export default function App() {
     addBtn: (hovered) => ({
       width: "100%",
       background: hovered ? BRAND.primaryLight : BRAND.primary,
-      color: BRAND.white,
+      color: "#fff",
       border: "none",
       borderRadius: 10,
       padding: "10px",
       fontWeight: 700,
       fontSize: "0.9rem",
       cursor: "pointer",
-      transition: "background 0.2s",
+      transition: "background 0.2s, box-shadow 0.2s",
+      boxShadow: hovered ? "0 0 12px rgba(99,102,241,0.5)" : "none",
     }),
     // BANNER
     bannerSection: {
-      background: `linear-gradient(135deg, ${BRAND.primary} 0%, ${BRAND.primaryDark} 100%)`,
+      background: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
       borderRadius: 20,
       padding: "40px 32px",
-      color: BRAND.white,
+      color: "#ffffff",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       flexWrap: "wrap",
       gap: 20,
       margin: "40px 0",
+      border: "1px solid rgba(99,102,241,0.3)",
+      boxShadow: "0 0 40px rgba(99,102,241,0.1)",
     },
     bannerTitle: {
       fontSize: "1.5rem",
       fontWeight: 800,
       marginBottom: 8,
+      color: "#ffffff",
     },
     bannerText: {
-      opacity: 0.85,
+      opacity: 0.8,
       fontSize: "0.95rem",
     },
     bannerBtn: {
-      background: BRAND.accent,
-      color: BRAND.white,
+      background: BRAND.primary,
+      color: "#fff",
       border: "none",
       borderRadius: 24,
       padding: "12px 28px",
@@ -557,7 +606,8 @@ export default function App() {
       fontSize: "1rem",
       cursor: "pointer",
       flexShrink: 0,
-      transition: "background 0.2s",
+      transition: "background 0.2s, box-shadow 0.2s",
+      boxShadow: "0 0 16px rgba(99,102,241,0.4)",
     },
     // FEATURES
     featuresGrid: {
@@ -567,11 +617,11 @@ export default function App() {
       margin: "40px 0",
     },
     featureCard: {
-      background: BRAND.white,
+      background: "#1e2130",
       borderRadius: 16,
       padding: "24px",
       textAlign: "center",
-      border: `1px solid ${BRAND.border}`,
+      border: "1px solid #2d3148",
     },
     featureIcon: {
       fontSize: "2.2rem",
@@ -579,7 +629,7 @@ export default function App() {
     },
     featureTitle: {
       fontWeight: 700,
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 4,
       fontSize: "0.95rem",
     },
@@ -592,7 +642,7 @@ export default function App() {
     cartOverlay: {
       position: "fixed",
       inset: 0,
-      background: "rgba(0,0,0,0.4)",
+      background: "rgba(0,0,0,0.6)",
       zIndex: 200,
     },
     cartDrawer: {
@@ -601,29 +651,30 @@ export default function App() {
       right: 0,
       width: "min(400px, 100vw)",
       height: "100vh",
-      background: BRAND.white,
+      background: "#13162a",
       zIndex: 201,
       display: "flex",
       flexDirection: "column",
-      boxShadow: "-4px 0 20px rgba(0,0,0,0.15)",
+      boxShadow: "-4px 0 30px rgba(0,0,0,0.5)",
+      border: "1px solid #2d3148",
     },
     cartHeader: {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       padding: "20px 20px",
-      borderBottom: `1px solid ${BRAND.border}`,
+      borderBottom: "1px solid #2d3148",
       background: BRAND.primary,
-      color: BRAND.white,
     },
     cartHeaderTitle: {
       fontWeight: 800,
       fontSize: "1.1rem",
+      color: "#fff",
     },
     closeBtn: {
       background: "rgba(255,255,255,0.2)",
       border: "none",
-      color: BRAND.white,
+      color: "#fff",
       borderRadius: "50%",
       width: 32,
       height: 32,
@@ -642,7 +693,7 @@ export default function App() {
       display: "flex",
       gap: 12,
       padding: "12px 0",
-      borderBottom: `1px solid ${BRAND.border}`,
+      borderBottom: "1px solid #2d3148",
       alignItems: "center",
     },
     cartItemImg: {
@@ -650,7 +701,7 @@ export default function App() {
       height: 60,
       objectFit: "cover",
       borderRadius: 10,
-      background: BRAND.bg,
+      background: "#1a1d2e",
     },
     cartItemInfo: {
       flex: 1,
@@ -658,11 +709,11 @@ export default function App() {
     cartItemName: {
       fontWeight: 700,
       fontSize: "0.88rem",
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 4,
     },
     cartItemPrice: {
-      color: BRAND.primary,
+      color: BRAND.primaryLight,
       fontWeight: 700,
       fontSize: "0.95rem",
     },
@@ -673,8 +724,8 @@ export default function App() {
       marginTop: 6,
     },
     qtyBtn: {
-      background: BRAND.bg,
-      border: `1px solid ${BRAND.border}`,
+      background: "#2d3148",
+      border: "1px solid #3d4168",
       borderRadius: "50%",
       width: 24,
       height: 24,
@@ -683,7 +734,7 @@ export default function App() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: BRAND.dark,
+      color: "#ffffff",
       fontWeight: 700,
     },
     qtyNum: {
@@ -691,32 +742,33 @@ export default function App() {
       minWidth: 20,
       textAlign: "center",
       fontSize: "0.9rem",
+      color: "#ffffff",
     },
     removeBtn: {
       background: "none",
       border: "none",
-      color: "#e53e3e",
+      color: "#f87171",
       cursor: "pointer",
       fontSize: "1.1rem",
       padding: 4,
     },
     cartFooter: {
       padding: "20px",
-      borderTop: `2px solid ${BRAND.border}`,
-      background: BRAND.bg,
+      borderTop: "2px solid #2d3148",
+      background: "#0f1117",
     },
     cartTotal: {
       display: "flex",
       justifyContent: "space-between",
       fontWeight: 800,
       fontSize: "1.1rem",
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 16,
     },
     checkoutBtn: {
       width: "100%",
       background: BRAND.primary,
-      color: BRAND.white,
+      color: "#fff",
       border: "none",
       borderRadius: 14,
       padding: "14px",
@@ -724,6 +776,7 @@ export default function App() {
       fontSize: "1rem",
       cursor: "pointer",
       transition: "background 0.2s",
+      boxShadow: "0 0 14px rgba(99,102,241,0.4)",
     },
     emptyCart: {
       textAlign: "center",
@@ -741,23 +794,24 @@ export default function App() {
       bottom: 24,
       left: "50%",
       transform: "translateX(-50%)",
-      background: BRAND.primaryDark,
-      color: BRAND.white,
+      background: "#1e2130",
+      color: "#ffffff",
       padding: "12px 24px",
       borderRadius: 30,
       fontWeight: 600,
       fontSize: "0.9rem",
       zIndex: 300,
-      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+      boxShadow: "0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px #2d3148",
       whiteSpace: "nowrap",
       maxWidth: "90vw",
       textAlign: "center",
+      border: `1px solid ${BRAND.primary}`,
     },
     // PRODUCT MODAL
     modalOverlay: {
       position: "fixed",
       inset: 0,
-      background: "rgba(0,0,0,0.5)",
+      background: "rgba(0,0,0,0.7)",
       zIndex: 200,
       display: "flex",
       alignItems: "center",
@@ -765,14 +819,15 @@ export default function App() {
       padding: 16,
     },
     modal: {
-      background: BRAND.white,
+      background: "#13162a",
       borderRadius: 20,
       overflow: "hidden",
       width: "100%",
       maxWidth: 540,
       maxHeight: "90vh",
       overflowY: "auto",
-      boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+      boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+      border: "1px solid #2d3148",
     },
     modalImg: {
       width: "100%",
@@ -785,7 +840,7 @@ export default function App() {
     modalName: {
       fontSize: "1.4rem",
       fontWeight: 800,
-      color: BRAND.dark,
+      color: "#ffffff",
       marginBottom: 8,
     },
     modalDesc: {
@@ -796,7 +851,7 @@ export default function App() {
     modalPrice: {
       fontSize: "1.8rem",
       fontWeight: 900,
-      color: BRAND.primary,
+      color: BRAND.primaryLight,
       marginBottom: 20,
     },
     modalActions: {
@@ -806,18 +861,19 @@ export default function App() {
     modalAddBtn: {
       flex: 1,
       background: BRAND.primary,
-      color: BRAND.white,
+      color: "#fff",
       border: "none",
       borderRadius: 14,
       padding: "14px",
       fontWeight: 700,
       fontSize: "1rem",
       cursor: "pointer",
+      boxShadow: "0 0 14px rgba(99,102,241,0.4)",
     },
     modalCloseBtn: {
-      background: BRAND.bg,
+      background: "#2d3148",
       color: BRAND.text,
-      border: `1px solid ${BRAND.border}`,
+      border: "1px solid #3d4168",
       borderRadius: 14,
       padding: "14px 20px",
       fontWeight: 600,
@@ -825,10 +881,11 @@ export default function App() {
     },
     // FOOTER
     footer: {
-      background: BRAND.dark,
-      color: "rgba(255,255,255,0.7)",
+      background: "#0b0d1a",
+      color: "rgba(255,255,255,0.5)",
       padding: "40px 24px 20px",
       marginTop: 60,
+      borderTop: "1px solid #1e2130",
     },
     footerGrid: {
       display: "grid",
@@ -838,37 +895,28 @@ export default function App() {
       margin: "0 auto 32px",
     },
     footerTitle: {
-      color: BRAND.white,
+      color: "#ffffff",
       fontWeight: 700,
       marginBottom: 12,
       fontSize: "1rem",
     },
     footerLink: {
       display: "block",
-      color: "rgba(255,255,255,0.6)",
+      color: "rgba(255,255,255,0.5)",
       textDecoration: "none",
       marginBottom: 6,
       fontSize: "0.88rem",
       cursor: "pointer",
+      transition: "color 0.2s",
     },
     footerBottom: {
-      borderTop: "1px solid rgba(255,255,255,0.1)",
+      borderTop: "1px solid rgba(255,255,255,0.08)",
       paddingTop: 20,
       textAlign: "center",
       fontSize: "0.82rem",
-      color: "rgba(255,255,255,0.4)",
+      color: "rgba(255,255,255,0.3)",
       maxWidth: 1200,
       margin: "0 auto",
-    },
-    // HAMBURGER
-    hamburger: {
-      background: "none",
-      border: "none",
-      color: BRAND.primary,
-      fontSize: "1.5rem",
-      cursor: "pointer",
-      display: "none",
-      padding: 4,
     },
   };
 
@@ -886,7 +934,7 @@ export default function App() {
     return (
       <>
         {/* HERO */}
-        <section style={styles.hero}>
+        <section style={styles.hero(heroSlide)}>
           <div style={styles.heroContent}>
             <span style={styles.heroEmoji}>{HERO_SLIDES[heroSlide].img}</span>
             <h1 style={styles.heroTitle}>{HERO_SLIDES[heroSlide].title}</h1>
@@ -894,8 +942,8 @@ export default function App() {
             <button
               style={styles.heroCta}
               onClick={() => setPage("catalogo")}
-              onMouseEnter={e => e.target.style.background = BRAND.accentDark}
-              onMouseLeave={e => e.target.style.background = BRAND.accent}
+              onMouseEnter={e => { e.target.style.background = BRAND.primaryDark; e.target.style.boxShadow = "0 0 28px rgba(99,102,241,0.7)"; }}
+              onMouseLeave={e => { e.target.style.background = BRAND.primary; e.target.style.boxShadow = "0 0 20px rgba(99,102,241,0.5)"; }}
             >
               {HERO_SLIDES[heroSlide].cta}
             </button>
@@ -997,8 +1045,8 @@ export default function App() {
             <button
               style={styles.bannerBtn}
               onClick={() => setPage("catalogo")}
-              onMouseEnter={e => e.target.style.background = BRAND.accentDark}
-              onMouseLeave={e => e.target.style.background = BRAND.accent}
+              onMouseEnter={e => { e.target.style.background = BRAND.primaryDark; }}
+              onMouseLeave={e => { e.target.style.background = BRAND.primary; }}
             >
               Ver Todas las Ofertas
             </button>
@@ -1018,7 +1066,6 @@ export default function App() {
         <h2 style={styles.sectionTitle}>Catálogo de Productos</h2>
         <p style={styles.sectionSubtitle}>Encuentra todo lo que necesitas para pescar</p>
 
-        {/* SEARCH + FILTERS */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20, alignItems: "center" }}>
           <div style={{ ...styles.searchBar, maxWidth: 320 }}>
             <input
@@ -1050,7 +1097,7 @@ export default function App() {
         {filteredProducts.length === 0 ? (
           <div style={{ textAlign: "center", padding: "60px 20px", color: BRAND.textLight }}>
             <div style={{ fontSize: "3rem", marginBottom: 12 }}>🔍</div>
-            <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 8 }}>Sin resultados</div>
+            <div style={{ fontWeight: 700, fontSize: "1.1rem", marginBottom: 8, color: "#fff" }}>Sin resultados</div>
             <div>Prueba con otra búsqueda o categoría</div>
           </div>
         ) : (
@@ -1111,16 +1158,17 @@ export default function App() {
     return (
       <main style={styles.main}>
         <div style={{
-          background: `linear-gradient(135deg, #e53e3e, #c53030)`,
+          background: "linear-gradient(135deg, #7f1d1d, #991b1b)",
           borderRadius: 20,
           padding: "32px",
           color: "#fff",
           marginBottom: 32,
           textAlign: "center",
+          border: "1px solid rgba(239,68,68,0.3)",
         }}>
           <div style={{ fontSize: "2.5rem", marginBottom: 8 }}>🏷️</div>
           <h2 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 8 }}>Ofertas Especiales</h2>
-          <p style={{ opacity: 0.9 }}>Los mejores precios en equipos de pesca. ¡Aprovecha mientras duren!</p>
+          <p style={{ opacity: 0.85 }}>Los mejores precios en equipos de pesca. ¡Aprovecha mientras duren!</p>
         </div>
         <div style={styles.productGrid}>
           {offerProducts.map(p => (
@@ -1138,7 +1186,7 @@ export default function App() {
                 </div>
                 <div style={{
                   position: "absolute", top: 10, right: 10,
-                  background: "#e53e3e", color: "#fff",
+                  background: "#ef4444", color: "#fff",
                   borderRadius: 8, padding: "4px 8px",
                   fontSize: "0.8rem", fontWeight: 800,
                 }}>
@@ -1155,7 +1203,7 @@ export default function App() {
                 <div style={styles.productPriceRow}>
                   <span style={styles.productPrice}>{p.price.toFixed(2)}€</span>
                   <span style={styles.productOriginal}>{p.originalPrice?.toFixed(2)}€</span>
-                  <span style={{ ...styles.productDiscount, background: "#fff5f5" }}>{discount(p.originalPrice, p.price)}</span>
+                  <span style={styles.productDiscount}>{discount(p.originalPrice, p.price)}</span>
                 </div>
                 <button
                   style={styles.addBtn(hoveredAdd === p.id)}
@@ -1179,7 +1227,6 @@ export default function App() {
 
     function handleSubmit(e) {
       e.preventDefault();
-      // TODO: Integrar con servicio de email real (EmailJS, Formspree, etc.)
       setSent(true);
     }
 
@@ -1196,7 +1243,7 @@ export default function App() {
           ].map((c, i) => (
             <div key={i} style={{ ...styles.featureCard, textAlign: "left" }}>
               <div style={{ fontSize: "1.5rem", marginBottom: 8 }}>{c.icon}</div>
-              <div style={{ fontWeight: 700, color: BRAND.dark, marginBottom: 2 }}>{c.label}</div>
+              <div style={{ fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>{c.label}</div>
               <div style={{ color: BRAND.textLight, fontSize: "0.88rem" }}>{c.value}</div>
             </div>
           ))}
@@ -1204,14 +1251,14 @@ export default function App() {
 
         {sent ? (
           <div style={{
-            background: BRAND.white,
+            background: "#1e2130",
             borderRadius: 16,
             padding: "48px",
             textAlign: "center",
-            border: `1px solid ${BRAND.border}`,
+            border: "1px solid #2d3148",
           }}>
             <div style={{ fontSize: "3rem", marginBottom: 16 }}>✅</div>
-            <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: BRAND.dark, marginBottom: 8 }}>
+            <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: "#ffffff", marginBottom: 8 }}>
               ¡Mensaje Enviado!
             </h3>
             <p style={{ color: BRAND.textLight }}>Te responderemos en menos de 24 horas. ¡Gracias!</p>
@@ -1222,10 +1269,10 @@ export default function App() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} style={{
-            background: BRAND.white,
+            background: "#1e2130",
             borderRadius: 16,
             padding: "28px",
-            border: `1px solid ${BRAND.border}`,
+            border: "1px solid #2d3148",
             display: "flex",
             flexDirection: "column",
             gap: 16,
@@ -1236,7 +1283,7 @@ export default function App() {
               { name: "asunto", label: "Asunto", type: "text", placeholder: "¿En qué te podemos ayudar?" },
             ].map(f => (
               <div key={f.name}>
-                <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: BRAND.dark, fontSize: "0.9rem" }}>
+                <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: "#ffffff", fontSize: "0.9rem" }}>
                   {f.label}
                 </label>
                 <input
@@ -1246,15 +1293,15 @@ export default function App() {
                   onChange={e => setForm({ ...form, [f.name]: e.target.value })}
                   required
                   style={{
-                    width: "100%", border: `1px solid ${BRAND.border}`, borderRadius: 10,
+                    width: "100%", border: "1px solid #2d3148", borderRadius: 10,
                     padding: "10px 14px", fontSize: "0.9rem", outline: "none",
-                    background: BRAND.bg, color: BRAND.text, boxSizing: "border-box",
+                    background: "#13162a", color: "#e2e8f0", boxSizing: "border-box",
                   }}
                 />
               </div>
             ))}
             <div>
-              <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: BRAND.dark, fontSize: "0.9rem" }}>
+              <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: "#ffffff", fontSize: "0.9rem" }}>
                 Mensaje
               </label>
               <textarea
@@ -1264,9 +1311,9 @@ export default function App() {
                 required
                 rows={5}
                 style={{
-                  width: "100%", border: `1px solid ${BRAND.border}`, borderRadius: 10,
+                  width: "100%", border: "1px solid #2d3148", borderRadius: 10,
                   padding: "10px 14px", fontSize: "0.9rem", outline: "none",
-                  background: BRAND.bg, color: BRAND.text, resize: "vertical",
+                  background: "#13162a", color: "#e2e8f0", resize: "vertical",
                   fontFamily: "inherit", boxSizing: "border-box",
                 }}
               />
@@ -1281,25 +1328,33 @@ export default function App() {
   }
 
   const navItems = [
-    { id: "inicio", label: "Inicio" },
-    { id: "catalogo", label: "Catálogo" },
-    { id: "ofertas", label: "🏷️ Ofertas" },
-    { id: "contacto", label: "Contacto" },
+    { id: "descubrir", label: "Descubrir", target: "inicio" },
+    { id: "inicio", label: "Inicio", target: "inicio" },
+    { id: "catalogo", label: "Catálogo", target: "catalogo" },
+    { id: "ofertas", label: "🏷️ Ofertas", target: "ofertas" },
+    { id: "contacto", label: "Contacto", target: "contacto" },
   ];
 
   return (
     <div style={styles.app}>
       {/* HEADER */}
       <header style={styles.header}>
+        {/* TOP BAR */}
         <div style={styles.headerTop}>
           🚚 Envío GRATIS en pedidos +40€ &nbsp;|&nbsp; 📞 +34 900 123 456 &nbsp;|&nbsp; Lunes–Viernes 9h–19h
         </div>
+
+        {/* MAIN HEADER */}
         <div style={styles.headerMain}>
-          <div style={styles.logo} onClick={() => setPage("inicio")}>
+          {/* LOGO + EARLY ACCESS BADGE */}
+          <div style={styles.logoArea} onClick={() => setPage("inicio")}>
             <span style={styles.logoIcon}>🎣</span>
             <span style={styles.logoText}>{BRAND.name}</span>
+            <span style={styles.earlyBadge}>EARLY ACCESS</span>
           </div>
-          <div style={{ ...styles.searchBar, display: "flex" }}>
+
+          {/* SEARCH */}
+          <div style={styles.searchBar}>
             <input
               type="text"
               placeholder="Buscar productos de pesca..."
@@ -1308,35 +1363,66 @@ export default function App() {
               onKeyDown={e => { if (e.key === "Enter") setPage("catalogo"); }}
               style={styles.searchInput}
             />
-            <button style={styles.searchBtn} onClick={() => setPage("catalogo")}>🔍</button>
+            <button
+              style={styles.searchBtn}
+              onClick={() => setPage("catalogo")}
+              onMouseEnter={e => e.target.style.background = BRAND.primaryDark}
+              onMouseLeave={e => e.target.style.background = BRAND.primary}
+            >🔍</button>
           </div>
+
+          {/* RIGHT ACTIONS */}
           <div style={styles.headerActions}>
+            {/* CONNECTED BADGE */}
+            <div style={styles.connectedBadge}>
+              <span style={styles.connectedDot} />
+              CONECTADA
+            </div>
+
+            {/* CART */}
             <button
               style={styles.cartBtn}
               onClick={() => setCartOpen(true)}
-              onMouseEnter={e => e.currentTarget.style.background = BRAND.primaryDark}
-              onMouseLeave={e => e.currentTarget.style.background = BRAND.primary}
+              onMouseEnter={e => { e.currentTarget.style.background = BRAND.primaryDark; e.currentTarget.style.boxShadow = "0 0 18px rgba(99,102,241,0.6)"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = BRAND.primary; e.currentTarget.style.boxShadow = "0 0 12px rgba(99,102,241,0.35)"; }}
             >
               🛒
               {cartCount > 0 && (
                 <span style={styles.cartBadge}>{cartCount}</span>
               )}
-              <span style={{ display: "none" }}>Carrito</span>
             </button>
           </div>
         </div>
+
+        {/* NAV */}
         <nav style={styles.nav}>
-          {navItems.map(item => (
-            <button
-              key={item.id}
-              style={styles.navItem(page === item.id, hoveredNav === item.id)}
-              onClick={() => setPage(item.id)}
-              onMouseEnter={() => setHoveredNav(item.id)}
-              onMouseLeave={() => setHoveredNav(null)}
-            >
-              {item.label}
-            </button>
-          ))}
+          {navItems.map(item => {
+            const isActive = item.id === "descubrir"
+              ? page === "inicio"
+              : page === (item.target || item.id);
+            const isDescubrir = item.id === "descubrir";
+            return (
+              <button
+                key={item.id}
+                style={{
+                  ...styles.navItem(
+                    isDescubrir ? page === "inicio" : page === item.target,
+                    hoveredNav === item.id
+                  ),
+                  ...(isDescubrir && page === "inicio" ? {
+                    background: BRAND.primary,
+                    color: "#ffffff",
+                    borderBottom: `2px solid ${BRAND.primaryLight}`,
+                  } : {}),
+                }}
+                onClick={() => setPage(item.target)}
+                onMouseEnter={() => setHoveredNav(item.id)}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </nav>
       </header>
 
@@ -1350,7 +1436,7 @@ export default function App() {
       <footer style={styles.footer}>
         <div style={styles.footerGrid}>
           <div>
-            <div style={{ fontSize: "1.3rem", fontWeight: 800, color: BRAND.white, marginBottom: 12 }}>
+            <div style={{ fontSize: "1.3rem", fontWeight: 800, color: "#ffffff", marginBottom: 12 }}>
               🎣 {BRAND.name}
             </div>
             <div style={{ fontSize: "0.85rem", lineHeight: 1.6, marginBottom: 12 }}>
@@ -1359,9 +1445,10 @@ export default function App() {
             <div style={{ display: "flex", gap: 10 }}>
               {["📘", "📸", "▶️"].map((icon, i) => (
                 <span key={i} style={{
-                  background: "rgba(255,255,255,0.1)", width: 36, height: 36,
+                  background: "rgba(99,102,241,0.15)", width: 36, height: 36,
                   borderRadius: "50%", display: "flex", alignItems: "center",
                   justifyContent: "center", cursor: "pointer", fontSize: "1rem",
+                  border: "1px solid rgba(99,102,241,0.3)",
                 }}>{icon}</span>
               ))}
             </div>
@@ -1380,22 +1467,23 @@ export default function App() {
           </div>
           <div>
             <div style={styles.footerTitle}>Newsletter</div>
-            <div style={{ fontSize: "0.85rem", marginBottom: 12 }}>Suscríbete y recibe ofertas exclusivas</div>
+            <div style={{ fontSize: "0.85rem", marginBottom: 12, color: "rgba(255,255,255,0.5)" }}>Suscríbete y recibe ofertas exclusivas</div>
             <div style={{ display: "flex", gap: 8 }}>
               <input
                 type="email"
                 placeholder="tu@email.com"
                 style={{
-                  flex: 1, padding: "8px 12px", borderRadius: 8, border: "none",
+                  flex: 1, padding: "8px 12px", borderRadius: 8,
+                  border: "1px solid #2d3148", background: "#1e2130",
                   fontSize: "0.85rem", outline: "none", minWidth: 0,
+                  color: "#e2e8f0",
                 }}
               />
               <button style={{
-                background: BRAND.accent, color: "#fff", border: "none",
+                background: BRAND.primary, color: "#fff", border: "none",
                 borderRadius: 8, padding: "8px 12px", cursor: "pointer", fontWeight: 700,
               }}>OK</button>
             </div>
-            {/* TODO: Integrar newsletter con servicio de email marketing */}
           </div>
         </div>
         <div style={styles.footerBottom}>
@@ -1416,7 +1504,7 @@ export default function App() {
               {cart.length === 0 ? (
                 <div style={styles.emptyCart}>
                   <span style={styles.emptyCartIcon}>🛒</span>
-                  <div style={{ fontWeight: 700, marginBottom: 8 }}>Tu carrito está vacío</div>
+                  <div style={{ fontWeight: 700, marginBottom: 8, color: "#fff" }}>Tu carrito está vacío</div>
                   <div style={{ fontSize: "0.88rem" }}>Añade productos para empezar a pescar</div>
                   <button
                     onClick={() => { setCartOpen(false); setPage("catalogo"); }}
@@ -1448,19 +1536,19 @@ export default function App() {
               <div style={styles.cartFooter}>
                 {cartTotal < 40 && (
                   <div style={{
-                    background: "#fff3cd", color: "#856404", borderRadius: 8,
+                    background: "rgba(251,191,36,0.1)", color: "#fbbf24", borderRadius: 8,
                     padding: "8px 12px", fontSize: "0.82rem", marginBottom: 12,
+                    border: "1px solid rgba(251,191,36,0.25)",
                   }}>
                     🚚 Te faltan {(40 - cartTotal).toFixed(2)}€ para el envío gratis
                   </div>
                 )}
                 <div style={styles.cartTotal}>
                   <span>Total:</span>
-                  <span style={{ color: BRAND.primary }}>{cartTotal.toFixed(2)}€</span>
+                  <span style={{ color: BRAND.primaryLight }}>{cartTotal.toFixed(2)}€</span>
                 </div>
                 <button
                   style={styles.checkoutBtn}
-                  // TODO: Integrar con pasarela de pago real (Stripe, PayPal, etc.)
                   onClick={() => showNotification("🔒 Pasarela de pago próximamente")}
                   onMouseEnter={e => e.target.style.background = BRAND.primaryLight}
                   onMouseLeave={e => e.target.style.background = BRAND.primary}
@@ -1471,7 +1559,7 @@ export default function App() {
                   onClick={() => setCart([])}
                   style={{
                     width: "100%", background: "none", border: "none",
-                    color: "#e53e3e", cursor: "pointer", marginTop: 10,
+                    color: "#f87171", cursor: "pointer", marginTop: 10,
                     fontSize: "0.85rem", fontWeight: 600,
                   }}
                 >Vaciar carrito</button>
@@ -1491,7 +1579,7 @@ export default function App() {
                 onClick={() => setSelectedProduct(null)}
                 style={{
                   position: "absolute", top: 12, right: 12,
-                  background: "rgba(0,0,0,0.5)", color: "#fff",
+                  background: "rgba(0,0,0,0.6)", color: "#fff",
                   border: "none", borderRadius: "50%", width: 36, height: 36,
                   cursor: "pointer", fontSize: "1.1rem", display: "flex",
                   alignItems: "center", justifyContent: "center",
